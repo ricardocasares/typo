@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export class Panel extends React.Component {
-  static propTypes = {
-    test: PropTypes.bool
-  };
-
-  render() {
-    return <h1>Hello</h1>;
-  }
+export function Panel({ open = false }) {
+  return <div>{open}</div>;
 }
+
+Panel.propTypes = {
+  open: PropTypes.bool
+};

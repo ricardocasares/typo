@@ -1,23 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should generate type definitions 1`] = `
-Array [
-  "import * as React from 'react';
-
-export interface PanelProps {
-    test?: boolean;
-}
-
-export class Panel extends React.Component<PanelProps, any> {
-    render(): JSX.Element;
-
-}
-
-",
-]
-`;
-
-exports[`should generate type definitions with given extension 1`] = `
+exports[`should accept different glob patterns 1`] = `
 Array [
   "import * as React from 'react';
 
@@ -31,6 +14,66 @@ export class Alert extends React.Component<AlertProps, any> {
 }
 
 ",
+  "import * as React from 'react';
+
+export interface PanelProps {
+    open?: boolean;
+}
+
+export const Panel: React.SFC<PanelProps>;
+
+",
+]
+`;
+
+exports[`should generate type definitions 1`] = `
+Array [
+  "import * as React from 'react';
+
+export type CompleteOptionalEnum = \\"News\\" | \\"Photos\\";
+
+export type CompleteOptionalUnion = string | number | Message;
+
+export interface CompleteOptionalObjectWithShape {
+    color?: string;
+    fontSize?: number;
+}
+
+export interface CompleteProps {
+    optionalArray?: any[];
+    optionalBool?: boolean;
+    optionalFunc?: (...args: any[])=>any;
+    optionalNumber?: number;
+    optionalObject?: Object;
+    optionalString?: string;
+    optionalSymbol?: Symbol;
+    optionalNode?: React.ReactNode;
+    optionalElement?: React.ReactElement<any>;
+    optionalMessage?: Message;
+    optionalEnum?: CompleteOptionalEnum;
+    optionalUnion?: CompleteOptionalUnion;
+    optionalArrayOf?: number[];
+    optionalObjectOf?: any;
+    optionalObjectWithShape?: CompleteOptionalObjectWithShape;
+    requiredFunc: (...args: any[])=>any;
+    requiredAny: any;
+}
+
+export class Complete extends React.Component<CompleteProps, any> {
+    render(): JSX.Element;
+
+}
+
+",
+  "import * as React from 'react';
+
+export interface PanelProps {
+    open?: boolean;
+}
+
+export const Panel: React.SFC<PanelProps>;
+
+",
 ]
 `;
 
@@ -39,14 +82,51 @@ Array [
   "declare module '@pkgz/ui' {
     import * as React from 'react';
 
-    export interface PanelProps {
-        test?: boolean;
+    export type CompleteOptionalEnum = \\"News\\" | \\"Photos\\";
+
+    export type CompleteOptionalUnion = string | number | Message;
+
+    export interface CompleteOptionalObjectWithShape {
+        color?: string;
+        fontSize?: number;
     }
 
-    export class Panel extends React.Component<PanelProps, any> {
+    export interface CompleteProps {
+        optionalArray?: any[];
+        optionalBool?: boolean;
+        optionalFunc?: (...args: any[])=>any;
+        optionalNumber?: number;
+        optionalObject?: Object;
+        optionalString?: string;
+        optionalSymbol?: Symbol;
+        optionalNode?: React.ReactNode;
+        optionalElement?: React.ReactElement<any>;
+        optionalMessage?: Message;
+        optionalEnum?: CompleteOptionalEnum;
+        optionalUnion?: CompleteOptionalUnion;
+        optionalArrayOf?: number[];
+        optionalObjectOf?: any;
+        optionalObjectWithShape?: CompleteOptionalObjectWithShape;
+        requiredFunc: (...args: any[])=>any;
+        requiredAny: any;
+    }
+
+    export class Complete extends React.Component<CompleteProps, any> {
         render(): JSX.Element;
 
     }
+
+}
+
+",
+  "declare module '@pkgz/ui' {
+    import * as React from 'react';
+
+    export interface PanelProps {
+        open?: boolean;
+    }
+
+    export const Panel: React.SFC<PanelProps>;
 
 }
 

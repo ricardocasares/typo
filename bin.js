@@ -2,19 +2,22 @@
 const sade = require("sade");
 const prog = sade("typo");
 const generate = require(".");
+const pkg = require("./package.json");
 
-prog.version("0.0.1");
+prog.version(pkg.version);
 
 prog
-  .command("type <src>", "", { default: true })
+  .command("type <glob>", "", { default: true })
   .describe("Look for React components and generate type definitions")
   .option("-m, --mod", "Change definition module name", null)
-  .option("-e, --ext", "Change file extension to look for", "jsx")
-  .example("type src -m @pkgz/ui -e jsx")
-  .action((src, { mod, ext }) => {
-    const types = generate({ src, mod, ext: `.${ext}` });
+  .option("-g, --git", "Avoid files ignored by .gitignore", true)
+  .example(`"**/*.jsx"`)
+  .example(`"src/**/*component.js" -m @pkgz/ui`)
+  .example(`"**/!(index|*spec)*.jsx" -m @pkgz/ui`)
+  .action((src, { mod, git }) => {
+    const types = generate({ src, mod, git });
     if (!types.length) {
-      return console.log(`No files found in "${src}" with extension "${e}"`);
+      return console.log(`No matching files found in "${src}"`);
     }
 
     types.forEach(t => console.log(t));
