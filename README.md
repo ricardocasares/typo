@@ -43,7 +43,7 @@ Your React components must be using `PropTypes` in order for this to work.
 ### Output
 
 ```bash
-❯ typo type fixtures/**/*.jsx -m @pkgz/ui
+❯ typo "src/**/*.jsx" -m @pkgz/ui
 declare module '@pkgz/ui' {
     import * as React from 'react';
 
@@ -62,7 +62,7 @@ declare module '@pkgz/ui' {
 ### Piping to a definition file
 
 ```bash
-❯ typo fixtures/**/*.jsx -m @pkgz/ui > index.d.ts
+❯ typo "src/**/*.jsx" -m @pkgz/ui > index.d.ts
 ❯ cat index.d.ts
 declare module '@pkgz/ui' {
     import * as React from 'react';
@@ -87,7 +87,7 @@ declare module '@pkgz/ui' {
 
 Feel free to open an issue, pull requests are preferred.
 
-**IMPORTANT** Make sure you always create new branches from `beta`.
+**IMPORTANT:** Make sure you always create new branches from `beta`.
 
 ### Automated versioning
 
