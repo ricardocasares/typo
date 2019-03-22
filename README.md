@@ -82,18 +82,6 @@ declare module '@pkgz/ui' {
 ## Known issues
 
 - [ ] Currently generates complete module per file instead of one global module
-- [ ] Currently has a naive way of finding components: given `src/` it will look for any folders and then find a file with the same folder name\*
-
-\*Your folder structure must look like this:
-
-```
-❯ tree src/
-src/
-├── Alert
-│   └── Alert.js
-└── Panel
-    └── Panel.jsx
-```
 
 ## Contributing
 
