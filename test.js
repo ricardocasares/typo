@@ -2,22 +2,21 @@ const path = require("path");
 const generator = require("./");
 
 test("should generate type definitions", () => {
-  const out = generator({ src: path.join(process.cwd(), "fixtures/") });
+  const out = generator({ src: "fixtures/**/!(index)*.jsx" });
   expect(out).toMatchSnapshot();
 });
 
 test("should generate type definitions with module name", () => {
   const out = generator({
     mod: "@pkgz/ui",
-    src: path.join(process.cwd(), "fixtures/")
+    src: "fixtures/**/!(index)*.jsx"
   });
   expect(out).toMatchSnapshot();
 });
 
-test("should generate type definitions with given extension", () => {
+test("should accept different glob patterns", () => {
   const out = generator({
-    ext: ".js",
-    src: path.join(process.cwd(), "fixtures/")
+    src: "fixtures/(Alert|Panel)/!(index)*.{js,jsx}"
   });
   expect(out).toMatchSnapshot();
 });
