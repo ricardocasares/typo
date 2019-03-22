@@ -1,0 +1,34 @@
+language: node_js
+
+node_js:
+  - "lts/*"
+
+cache:
+  directories:
+    - "node_modules"
+
+install:
+  - npm ci
+
+script:
+  - npm run-script test --coverage
+
+after_success:
+  - npx codecov
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: npm run release
+    on:
+      branch: master
+
+  - provider: script
+    skip_cleanup: true
+    script: npm run release
+    on:
+      branch: beta
+
+notifications:
+  email:
+    on_success: never

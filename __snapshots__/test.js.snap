@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should generate type definitions 1`] = `
+Array [
+  "import * as React from 'react';
+
+export interface PanelProps {
+    test?: boolean;
+}
+
+export class Panel extends React.Component<PanelProps, any> {
+    render(): JSX.Element;
+
+}
+
+",
+]
+`;
+
+exports[`should generate type definitions with given extension 1`] = `
+Array [
+  "import * as React from 'react';
+
+export interface AlertProps {
+    alert?: boolean;
+}
+
+export class Alert extends React.Component<AlertProps, any> {
+    render(): JSX.Element;
+
+}
+
+",
+]
+`;
+
+exports[`should generate type definitions with module name 1`] = `
+Array [
+  "declare module '@pkgz/ui' {
+    import * as React from 'react';
+
+    export interface PanelProps {
+        test?: boolean;
+    }
+
+    export class Panel extends React.Component<PanelProps, any> {
+        render(): JSX.Element;
+
+    }
+
+}
+
+",
+]
+`;
