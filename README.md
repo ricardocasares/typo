@@ -19,27 +19,31 @@ Your React components must be using `PropTypes` in order for this to work.
 ### Example
 
 ```bash
-❯ typo type --help
+❯ typo type -h
 
   Description
     Look for React components and generate type definitions
 
   Usage
-    $ typo type <src> [options]
+    $ typo type <glob> [options]
 
   Options
     -m, --mod     Change definition module name
-    -e, --ext     Change file extension to look for  (default jsx)
+    -g, --git     Avoid files ignored by .gitignore  (default true)
     -h, --help    Displays this message
 
   Examples
-    $ typo type src -m @pkgz/ui -e jsx
+    $ typo "**/*.jsx"
+    $ typo "src/**/*component.js" -m @pkgz/ui
+    $ typo "**/!(index|*spec)*.jsx" -m @pkgz/ui
 ```
+
+**HEADS UP:** Depending which shell you use (I use `fish`) you'll have to escape the glob patterns accordingly
 
 ### Output
 
 ```bash
-❯ typo type fixtures/ -m @pkgz/ui
+❯ typo type fixtures/**/*.jsx -m @pkgz/ui
 declare module '@pkgz/ui' {
     import * as React from 'react';
 
@@ -58,7 +62,7 @@ declare module '@pkgz/ui' {
 ### Piping to a definition file
 
 ```bash
-❯ typo fixtures/ -m @pkgz/ui > index.d.ts
+❯ typo fixtures/**/*.jsx -m @pkgz/ui > index.d.ts
 ❯ cat index.d.ts
 declare module '@pkgz/ui' {
     import * as React from 'react';
